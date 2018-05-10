@@ -1,78 +1,24 @@
-## Welcome to GitHub Pages
-
-<!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-    font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
-</head>
-<body>
-
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
-
-<h2>Animated Sidenav Example</h2>
-<p>Click on the element below to open the side navigation menu.</p>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-</script>
-     
-</body>
-</html> 
-
+<ul class="doc-side-nav">
+   {% assign current = page.url | downcase | split: '/' %}
+	<li><h5 class="doc-side-nav-title"><a href="{{ site.baseurl }}/about/">About</a></h5></li>
+	<li class="doc-side-nav-list-item">
+	<a href="{{ site.baseurl }}/about/intro" {% if current[2] == 'intro.html' %}class='current'{% endif %}>
+	Introduction</a></li>
+	<li class="doc-side-nav-list-item">
+	<a href="{{ site.baseurl }}/about/philosophy" {% if current[2] == 'philosophy.html' %}class='current'{% endif %}>
+	Philosophy</a></li>
+	<li class="doc-side-nav-list-item">
+	<a href="{{ site.baseurl }}/about/compatibility" {% if current[2] == 'compatibility.html' %}class='current'{% endif %}>
+	Compatibility</a></li>
+   <li class="doc-side-nav-title">
+   <a href="{{ site.baseurl }}/about/design/" {% if current[2] == 'design' %}class='current'{% endif %}>
+   Design Notes</a></li>
+  <li class="doc-side-nav-list-item">
+  <a href="{{ site.baseurl }}/about/design/mutex" {% if current[3] == 'mutex.html' %}class='current'{% endif %}>
+   absl::Mutex</a></li>
+   <li class="doc-side-nav-list-item">
+   <a href="{{ site.baseurl }}/about/design/dropin-types" {% if current[3] == 'dropin-types.html' %}class='current'{% endif %}>
+   Pre-Adopted std:: types</a></li>
+ </ul>
+    </html>
