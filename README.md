@@ -53,7 +53,7 @@ body {font-family: "Lato", sans-serif;}
 </head>
 <body>
 
-<p>Click on the buttons inside the tabbed menu:</p>
+
 
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
@@ -62,7 +62,7 @@ body {font-family: "Lato", sans-serif;}
 </div>
 
 <div id="London" class="tabcontent">
-  <h3>London</h3>
+  <h3>Introduction</h3>
   <p>London is the capital city of England.</p>
 </div>
 
