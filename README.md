@@ -51,7 +51,7 @@
 <div class="dropdown" style="float:left;">
   <button class="dropbtn">Left</button>
   <div class="dropdown-content" style="left:0;">
-    <a href="#">Link 1</a>
+    <a href="http://idratherbewriting.com/documentation-theme-jekyll/mydoc_install_jekyll_on_windows.html">Link 1</a>
     <a href="#">Link 2</a>
     <a href="#">Link 3</a>
   </div>
