@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,8 +47,6 @@
 </head>
 <body>
 
-<h2>Aligned Dropdown Content</h2>
-<p>Determine whether the dropdown content should go from left to right or right to left with the left and right properties.</p>
 
 <div class="dropdown" style="float:left;">
   <button class="dropbtn">Left</button>
@@ -59,7 +57,6 @@
   </div>
 </div>
 
-</div>
 
 </body>
 </html>
