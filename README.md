@@ -51,9 +51,9 @@
 <div class="dropdown" style="float:left;">
   <button class="dropbtn">Left</button>
   <div class="dropdown-content" style="left:0;">
-    <a href="https://github.com/SAURAN12/API-website/blob/master/swagger.json">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <a href="https://github.com/SAURAN12/API-website/blob/master/swagger.json">Introduction</a>
+    <a href="#">API Overview</a>
+    <a href="#">Getting Started</a>
   </div>
 </div>
 
