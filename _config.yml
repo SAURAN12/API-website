@@ -1,8 +1,3 @@
-theme:
-    name: mkdocs
-    highlightjs: true
-    hljs_languages:
-        - yaml
-        - django
+
 nav:
     - Support: README.md
