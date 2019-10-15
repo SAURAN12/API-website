@@ -1,4 +1,5 @@
- ### Support
+
+### Support
 
       Mattermost core committers work with the community to keep the API documentation up-to-date.
 
