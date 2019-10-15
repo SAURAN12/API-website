@@ -1,2 +1,2 @@
-theme: jekyll-theme-tactile
-- Support: Support.md
+nav:
+    - Support: support.md
