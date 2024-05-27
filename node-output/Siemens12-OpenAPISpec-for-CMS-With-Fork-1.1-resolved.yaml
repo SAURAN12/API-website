@@ -1,0 +1,310 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "OpenAPI Spec for CMS",
+    "description" : "The API specification for the CMS system",
+    "termsOfService" : "http://mycollege.com/tos",
+    "contact" : {
+      "name" : "Praveenkumar Bouna",
+      "email" : "hello@codewithpraveen.com"
+    },
+    "license" : {
+      "name" : "MIT"
+    },
+    "version" : "1.1"
+  },
+  "externalDocs" : {
+    "description" : "More information about CMS API",
+    "url" : "http://mycollege.com/api"
+  },
+  "servers" : [ {
+    "url" : "https://localhost:44333/api/v1",
+    "description" : "Production server"
+  }, {
+    "url" : "https://{hostname}:{port}/stagingapi/v1",
+    "description" : "Development server",
+    "variables" : {
+      "hostname" : {
+        "default" : "localhost"
+      },
+      "port" : {
+        "default" : "44333"
+      }
+    }
+  } ],
+  "security" : [ {
+    "BasicAuthentication" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "course",
+    "description" : "Operations about course"
+  }, {
+    "name" : "student",
+    "description" : "Operation about student"
+  } ],
+  "paths" : {
+    "/courses" : {
+      "get" : {
+        "tags" : [ "course" ],
+        "summary" : "Get all the courses",
+        "description" : "Returns the list of all courses",
+        "operationId" : "getCourses",
+        "parameters" : [ {
+          "name" : "sortBy",
+          "in" : "query",
+          "description" : "The sort order",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "default" : "asc",
+            "enum" : [ "asc", "desc" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Succesfully returned all course details",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Course"
+                  }
+                }
+              }
+            }
+          },
+          "4XX" : {
+            "description" : "Bad Request"
+          },
+          "5XX" : {
+            "description" : "Internal Server Error"
+          },
+          "default" : {
+            "description" : "Success"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "course" ],
+        "summary" : "Add a new course",
+        "description" : "Adds a new course and returns the added course",
+        "operationId" : "addCourse",
+        "requestBody" : {
+          "description" : "The new course to add",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Course"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Course"
+                }
+              }
+            }
+          },
+          "4XX" : {
+            "description" : "Bad Request"
+          },
+          "5XX" : {
+            "description" : "Internal Server Error"
+          },
+          "default" : {
+            "description" : "Success"
+          }
+        },
+        "security" : [ {
+          "BearerAuthentication" : [ ]
+        } ]
+      }
+    },
+    "/courses/{courseId}" : {
+      "summary" : "Operations about individual course",
+      "description" : "Contains the list of operations on a course",
+      "get" : {
+        "tags" : [ "course" ],
+        "summary" : "Get a specific course",
+        "description" : "Returns the course details.",
+        "operationId" : "getCourse",
+        "parameters" : [ {
+          "name" : "courseId",
+          "in" : "path",
+          "description" : "The unique course Id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Course"
+                }
+              }
+            }
+          },
+          "4XX" : {
+            "description" : "Bad Request"
+          },
+          "5XX" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "course" ],
+        "summary" : "Update a specific course",
+        "description" : "Returns the course details.",
+        "operationId" : "updateCourse",
+        "parameters" : [ {
+          "name" : "courseId",
+          "in" : "path",
+          "description" : "The unique course Id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The course details to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Course"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Course"
+                }
+              }
+            }
+          },
+          "4XX" : {
+            "description" : "Bad Request"
+          },
+          "5XX" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "course" ],
+        "summary" : "Delete a specific course",
+        "description" : "Removes a course entry from the system.",
+        "operationId" : "deleteCourse",
+        "parameters" : [ {
+          "name" : "courseId",
+          "in" : "path",
+          "description" : "The unique course Id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Course"
+                }
+              }
+            }
+          },
+          "4XX" : {
+            "description" : "Bad Request"
+          },
+          "5XX" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Course" : {
+        "required" : [ "courseDuration", "courseName", "courseType" ],
+        "type" : "object",
+        "properties" : {
+          "courseId" : {
+            "type" : "number",
+            "description" : "Unique ID of the course"
+          },
+          "courseName" : {
+            "type" : "string",
+            "description" : "Name of the course"
+          },
+          "courseDuration" : {
+            "type" : "number",
+            "description" : "Number years of the course"
+          },
+          "courseType" : {
+            "type" : "string",
+            "enum" : [ "Engineering", "Medical", "Management" ]
+          }
+        },
+        "description" : "Represents a course entry",
+        "example" : {
+          "courseId" : 1,
+          "courseName" : "Computer Science",
+          "courseDuration" : 4,
+          "courseType" : "Engineering"
+        }
+      }
+    },
+    "responses" : {
+      "CourseSuccess" : {
+        "description" : "Success",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Course"
+            }
+          }
+        }
+      },
+      "4XXResponse" : {
+        "description" : "Bad Request"
+      }
+    },
+    "securitySchemes" : {
+      "BasicAuthentication" : {
+        "type" : "http",
+        "scheme" : "basic"
+      },
+      "BearerAuthentication" : {
+        "type" : "http",
+        "scheme" : "bearer"
+      }
+    }
+  }
+}
